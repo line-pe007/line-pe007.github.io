@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="芒果台直播提供湖南卫视及芒果TV所有频道、节目的高清在线直播观看服务。收录最新热播综艺、电视剧、新闻资讯及独播内容，支持多终端同步播放。">
+    <meta name="keywords" content="芒果台直播,湖南卫视直播,芒果TV在线观看,湖南卫视节目表,芒果TV直播入口">
+    <title>芒果台直播-湖南卫视高清在线观看与节目指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #e60012; /* 芒果红 */
+            --secondary-color: #ff8200; /* 活力橙 */
+            --dark-bg: #1a1a1a;
+            --card-bg: #252525;
+            --text-main: #ffffff;
+            --text-secondary: #b0b0b0;
+            --border-radius: 8px;
+            --spacing-unit: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(0, 0, 0, 0.95);
+            border-bottom: 2px solid var(--primary-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            font-size: 16px;
+            color: var(--text-main);
+            padding: 8px 0;
+            position: relative;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .live-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .live-btn:hover {
+            background-color: #cc0010;
+        }
+
+        .live-indicator {
+            width: 8px;
+            height: 8px;
+            background-color: #ff3333;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; box-shadow: 0 0 0 0 rgba(255, 51, 51, 0.7); }
+            70% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(255, 51, 51, 0); }
+            100% { opacity: 1; box-shadow: 0 0 0 0 rgba(255, 51, 51, 0); }
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing-unit);
+        }
+
+        /* Hero Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: var(--spacing-unit);
+            margin-bottom: var(--spacing-unit);
+        }
+
+        .main-player {
+            background-color: #000;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #333;
+        }
+
+        .main-player-placeholder {
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        .main-player-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            color: var(--primary-color);
+        }
+
+        .player-controls {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            padding: 20px;
+            display: flex;
+            gap: 16px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .main-player:hover .player-controls {
+            opacity: 1;
+        }
+
+        .control-btn {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .control-btn:hover {
+            background: var(--primary-color);
+        }
+
+        .current-info {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .current-info h2 {
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: var(--primary-color);
+        }
+
+        .current-info p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            font-size: 12px;
+            padding: 4px 8px;
+            background-color: #333;
+            border-radius: 4px;
+        }
+
+        .tag.hot {
+            background-color: rgba(230, 0, 18, 0.2);
+            color: var(--primary-color);
+        }
+
+        /* Schedule Section */
+        .section-title {
+            font-size: 20px;
+            margin-bottom: 16px;
+            padding-left: 12px;
+            border-left: 4px solid var(--primary-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .schedule-list {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .schedule-item {
+            display: flex;
+            border-bottom: 1px solid #333;
+        }
+
+        .schedule-item:last-child {
+            border-bottom: none;
+        }
+
+        .time {
+            width: 100px;
+            padding: 16px;
+            background-color: rgba(255,255,255,0.03);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .program {
+            flex: 1;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .program-info h3 {
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .program-info p {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .program-status {
+            font-size: 12px;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .status-live {
+            background-color: rgba(230, 0, 18, 0.2);
+            color: var(--primary-color);
+        }
+
+        .status-upcoming {
+            background-color: #333;
+            color: var(--text-secondary);
+        }
+
+        /* Channels Grid */
+        .channels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: var(--spacing-unit);
+            margin-bottom: var(--spacing-unit);
+        }
+
+        .channel-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .channel-card:hover {
+            transform: translateY(-4px);
+            background-color: #2f2f2f;
+            border-color: var(--primary-color);
+        }
+
+        .channel-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 12px;
+            background-color: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--secondary-color);
+        }
+
+        .channel-name {
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .channel-desc {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        /* Features / Info */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-unit);
+            margin-top: var(--spacing-unit);
+        }
+
+        .info-card {
+            background-color: var(--card-bg);
+            padding: 24px;
+            border-radius: var(--border-radius);
+        }
+
+        .info-card h3 {
+            margin-bottom: 12px;
+            color: var(--secondary-color);
+        }
+
+        .info-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111;
+            padding: 40px var(--spacing-unit);
+            margin-top: 40px;
+            text-align: center;
+            border-top: 1px solid #333;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            color: #666;
+            font-size: 12px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none; /* Simplified for mobile */
+            }
+
+            .header-inner {
+                justify-content: center;
+            }
+
+            .schedule-item {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .time {
+                width: 100%;
+                text-align: left;
+                padding: 8px 16px;
+                font-size: 12px;
+            }
+
+            .program {
+                padding: 12px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-inner">
+        <a href="#" class="logo">
+            <span>Mango</span>TV Live
+        </a>
+        <nav class="nav-links">
+            <a href="#" class="active">首页</a>
+            <a href="#">卫视直播</a>
+            <a href="#">芒果TV专区</a>
+            <a href="#">节目表</a>
+            <a href="#">VIP会员</a>
+        </nav>
+        <a href="#live-player" class="live-btn">
+            <div class="live-indicator"></div>
+            正在直播
+        </a>
+    </div>
+</header>
+
+<main class="container">
+    
+    <!-- Hero Section: Main Player & Current Info -->
+    <section class="hero" id="live-player">
+        <div class="main-player">
+            <div class="main-player-placeholder">
+                <div class="main-player-icon">▶</div>
+                <h3>湖南卫视直播信号</h3>
+                <p>请点击下方控制栏开始观看</p>
+            </div>
+            <div class="player-controls">
+                <button class="control-btn" title="播放/暂停">▶</button>
+                <button class="control-btn" title="全屏">⛶</button>
+                <button class="control-btn" title="清晰度">HD</button>
+            </div>
+        </div>
+        <div class="current-info">
+            <h2>2023快乐大本营</h2>
+            <p>本期主题：青春风暴·致敬经典</p>
+            <div class="tags">
+                <span class="tag hot">综艺</span>
+                <span class="tag">直播中</span>
+                <span class="tag">互动</span>
+            </div>
+            <p style="margin-top: 16px; font-size: 13px; color: #888;">
+                当前观看人数：<span style="color: var(--primary-color);">128,452</span> 人
+            </p>
+        </div>
+    </section>
+
+    <!-- Live Schedule -->
+    <section>
+        <div class="section-title">
+            <span>今日直播预告</span>
+            <a href="#" style="font-size: 14px; color: var(--text-secondary);">查看完整节目表 &rarr;</a>
+        </div>
+        <div class="schedule-list">
+            <div class="schedule-item">
+                <div class="time">18:30</div>
+                <div class="program">
+                    <div class="program-info">
+                        <h3>湖南新闻联播</h3>
+                        <p>本地新闻资讯</p>
+                    </div>
+                    <span class="program-status status-upcoming">未开始</span>
+                </div>
+            </div>
+            <div class="schedule-item">
+                <div class="time">19:30</div>
+                <div class="program">
+                    <div class="program-info">
+                        <h3>天天向上</h3>
+                        <p>国民综艺，精彩不断</p>
+                    </div>
+                    <span class="program-status status-upcoming">未开始</span>
+                </div>
+            </div>
+            <div class="schedule-item">
+                <div class="time">20:00</div>
+                <div class="program">
+                    <div class="program-info">
+                        <h3>2023快乐大本营</h3>
+                        <p>青春风暴·致敬经典</p>
+                    </div>
+                    <span class="program-status status-live">正在直播</span>
+                </div>
+            </div>
+            <div class="schedule-item">
+                <div class="time">21:20</div>
+                <div class="program">
+                    <div class="program-info">
+                        <h3>你好，星期六</h3>
+                        <p>全新升级，等你来玩</p>
+                    </div>
+                    <span class="program-status status-upcoming">即将开始</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Channel Grid -->
+    <section>
+        <div class="section-title">
+            <span>频道矩阵</span>
+        </div>
+        <div class="channels-grid">
+            <div class="channel-card">
+                <div class="channel-icon">📺</div>
+                <div class="channel-name">湖南卫视</div>
+                <div class="channel-desc">综合频道</div>
+            </div>
+            <div class="channel-card">
+                <div class="channel-icon">🎬</div>
+                <div class="channel-name">金鹰卡通</div>
+                <div class="channel-desc">少儿频道</div>
+            </div>
+            <div class="channel-card">
+                <div class="channel-icon">🥗</div>
+                <div class="channel-name">湖南娱乐</div>
+                <div class="channel-desc">娱乐频道</div>
+            </div>
+            <div class="channel-card">
+                <div class="channel-icon">🎵</div>
+                <div class="channel-name">湖南卫视直播</div>
+                <div class="channel-desc">高清直播</div>
+            </div>
+            <div class="channel-card">
+                <div class="channel-icon">📺</div>
+                <div class="channel-name">芒果TV</div>
+                <div class="channel-desc">网络视频</div>
+            </div>
+            <div class="channel-card">
+                <div class="channel-icon">📻</div>
+                <div class="channel-name">芒果动听</div>
+                <div class="channel-desc">音乐电台</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info & Features -->
+    <section class="info-grid">
+        <article class="info-card">
+            <h3>📺 如何观看直播</h3>
+            <p>本站提供湖南卫视及芒果TV旗下各频道的实时流媒体服务。请确保您的网络连接稳定，推荐使用 Chrome 或 Edge 浏览器以获得最佳播放体验。部分频道可能需要 VIP 会员权限。</p>
+        </article>
+        <article class="info-card">
+            <h3>📱 多端同步</h3>
+            <p>支持电脑网页端、手机浏览器及移动端 APP 同步观看。随时随地不错过任何一期精彩综艺或电视剧更新。</p>
+        </article>
+        <article class="info-card">
+            <h3>⚠️ 注意事项</h3>
+            <p>直播信号来源于网络公开源，本站仅为整理与展示平台。如有版权问题，请通过官方渠道反馈。</p>
+        </article>
+    </section>
+
+</main>
+
+<footer>
+    <div class="footer-links">
+        <a href="#">关于我们</a>
+        <a href="#">版权声明</a>
+        <a href="#">隐私政策</a>
+        <a href="#">联系客服</a>
+    </div>
+    <p class="copyright">
+        &copy; 2023 芒果台直播资源站. All Rights Reserved.<br>
+        本站非湖南广播电视台官方网站，仅提供相关频道信息展示与直播入口导航。
+    </p>
+</footer>
+
+<script>
+    // 简单的交互逻辑：模拟播放器状态切换
+    const playBtn = document.querySelector('.control-btn');
+    const placeholder = document.querySelector('.main-player-placeholder');
+    let isPlaying = false;
+
+    playBtn.addEventListener('click', () => {
+        isPlaying = !isPlaying;
+        if (isPlaying) {
+            placeholder.innerHTML = '<h3>正在播放：2023快乐大本营</h3><p>信号源：湖南卫视高清</p>';
+            playBtn.textContent = '❚❚';
+        } else {
+            placeholder.innerHTML = '<div class="main-player-icon">▶</div><h3>湖南卫视直播信号</h3><p>请点击下方控制栏开始观看</p>';
+            playBtn.textContent = '▶';
+        }
+    });
+
+    // 模拟直播间人数波动
+    const counterEl = document.querySelector('span[style*="color: var(--primary-color);"]');
+    let count = 128452;
+    setInterval(() => {
+        const change = Math.floor(Math.random() * 10) - 4; // -4 to +5
+        count += change;
+        counterEl.textContent = count.toLocaleString();
+    }, 3000);
+</script>
+
+</body>
+</html>
