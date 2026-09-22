@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="婚姻吧 - 专业的婚姻情感咨询与心理疏导平台。提供婚姻危机处理、夫妻沟通技巧、婚前辅导及离婚咨询指南。在这里，您能找到解决婚姻矛盾、重建亲密关系的实用建议与情感支持。">
+    <meta name="keywords" content="婚姻吧,婚姻情感咨询,夫妻沟通技巧,婚姻危机处理,离婚咨询,婚姻挽救">
+    <title>婚姻吧-专业的婚姻情感咨询与心理疏导平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #d63384; /* 柔和的玫瑰红，代表情感与关怀 */
+            --primary-hover: #b02a6b;
+            --secondary-color: #6c757d; /* 中性灰 */
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-main: #212529;
+            --text-light: #6c757d;
+            --border-color: #dee2e6;
+            --spacing-unit: 1rem;
+            --container-width: 1200px;
+            --radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* 布局容器 */
+        .container {
+            width: 100%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        /* 顶部导航 */
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .cta-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1.25rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--primary-hover);
+            color: white;
+        }
+
+        /* Hero 区域 */
+        .hero {
+            background: linear-gradient(135deg, #fff0f3 0%, #ffeef8 100%);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .search-box {
+            background: white;
+            padding: 0.5rem;
+            border-radius: 50px;
+            display: inline-flex;
+            box-shadow: var(--shadow);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .search-box input {
+            flex: 1;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            outline: none;
+            border-radius: 50px;
+        }
+
+        .search-box button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .search-box button:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* 通用区块样式 */
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+        }
+
+        /* 痛点分析 */
+        .pain-points {
+            background-color: white;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 2rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            background-color: #fff0f3;
+            color: var(--primary-color);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* 解决方案 */
+        .solutions {
+            background-color: var(--bg-color);
+        }
+
+        .solution-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .solution-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #ffe0e6;
+            line-height: 1;
+        }
+
+        .solution-content h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* 常见问题 */
+        .faq {
+            background-color: white;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            color: var(--text-light);
+            padding-left: 1rem;
+            border-left: 3px solid var(--primary-color);
+            display: none; /* JS Toggle */
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--primary-color);
+        }
+
+        /* 咨询引导 */
+        .consult-banner {
+            background: var(--primary-color);
+            color: white;
+            border-radius: var(--radius);
+            padding: 3rem;
+            text-align: center;
+            margin: 4rem auto;
+        }
+
+        .consult-banner h2 {
+            margin-bottom: 1rem;
+        }
+
+        .consult-banner p {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn-white {
+            background-color: white;
+            color: var(--primary-color);
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            display: inline-block;
+        }
+
+        .btn-white:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: #212529;
+            color: #adb5bd;
+            padding: 4rem 0 2rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 1.25rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #343a40;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* 简化处理，移动端隐藏导航 */
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .solution-item {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 顶部导航 -->
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">
+                <span>❤</span> 婚姻吧
+            </a>
+            <nav class="nav-links">
+                <a href="#" class="active">首页</a>
+                <a href="#">情感咨询</a>
+                <a href="#">婚姻挽救</a>
+                <a href="#">婚前辅导</a>
+                <a href="#">离婚咨询</a>
+            </nav>
+            <a href="#consult" class="cta-btn">立即咨询</a>
+        </div>
+    </header>
+
+    <!-- 首屏 Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>婚姻吧，守护您的幸福港湾</h1>
+            <p>面对婚姻危机、沟通障碍或情感困惑？我们提供专业的情感咨询与解决方案，帮助您修复关系，重获内心平静。</p>
+            <form class="search-box" onsubmit="event.preventDefault(); alert('感谢您的关注，我们的咨询师将尽快与您联系。');">
+                <input type="text" placeholder="描述您遇到的问题，例如：婆媳矛盾、出轨危机..." required>
+                <button type="submit">搜索解决方案</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- 痛点分析 -->
+    <section class="pain-points">
+        <div class="container">
+            <div class="section-header">
+                <h2>您是否正在经历这些困扰？</h2>
+                <p>很多夫妻在婚姻的不同阶段都会遇到挑战，识别问题是解决问题的第一步。</p>
+            </div>
+            <div class="grid-3">
+                <article class="card">
+                    <div class="icon-box">🗣</div>
+                    <h3>沟通障碍</h3>
+                    <p>回家后无话可说，或者一开口就争吵？缺乏有效的倾听与表达技巧，让爱意逐渐消磨。</p>
+                </article>
+                <article class="card">
+                    <div class="icon-box">💔</div>
+                    <h3>信任危机</h3>
+                    <p>怀疑对方出轨，或者因过去的不忠行为导致关系破裂。信任重建需要极大的耐心与专业引导。</p>
+                </article>
+                <article class="card">
+                    <div class="icon-box">🧩</div>
+                    <h3>家庭矛盾</h3>
+                    <p>与伴侣父母、亲戚关系紧张，生活习惯差异巨大，导致家庭氛围压抑，影响夫妻感情。</p>
+                </article>
+                <article class="card">
+                    <div class="icon-box">🛌</div>
+                    <h3>情感疏离</h3>
+                    <p>同床异梦，身体接触减少，感觉彼此像最熟悉的陌生人，内心感到孤独与无助。</p>
+                </article>
+                <article class="card">
+                    <div class="icon-box">👶</div>
+                    <h3>育儿分歧</h3>
+                    <p>在教育孩子的问题上观念冲突，常因小事爆发激烈争吵，忽略了夫妻间的情感交流。</p>
+                </article>
+                <article class="card">
+                    <div class="icon-box">📉</div>
+                    <h3>激情褪去</h3>
+                    <p>婚姻进入平淡期，激情不再，感觉生活失去了色彩，对未来感到迷茫和焦虑。</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 解决方案 -->
+    <section class="solutions">
+        <div class="container">
+            <div class="section-header">
+                <h2>婚姻吧为您提供的服务</h2>
+                <p>基于心理学原理与实战经验，定制专属的情感修复方案。</p>
+            </div>
+            <div class="solution-list">
+                <div class="solution-item">
+                    <div class="solution-number">01</div>
+                    <div class="solution-content">
+                        <h3>婚姻危机干预</h3>
+                        <p>针对出轨、冷暴力等紧急情况，提供情绪急救与危机公关策略，帮助双方冷静下来，避免冲动离婚。</p>
+                    </div>
+                </div>
+                <div class="solution-item">
+                    <div class="solution-number">02</div>
+                    <div class="solution-content">
+                        <h3>深度夫妻咨询</h3>
+                        <p>通过专业的咨询技术，挖掘冲突背后的深层需求，修复沟通模式，重建亲密感与信任。</p>
+                    </div>
+                </div>
+                <div class="solution-item">
+                    <div class="solution-number">03</div>
+                    <div class="solution-content">
+                        <h3>婚前辅导与规划</h3>
+                        <p>帮助准新人建立正确的婚姻观，探讨价值观差异，制定未来规划，为婚姻生活打下坚实基础。</p>
+                    </div>
+                </div>
+                <div class="solution-item">
+                    <div class="solution-number">04</div>
+                    <div class="solution-content">
+                        <h3>离婚咨询与协议</h3>
+                        <p>对于无法继续的婚姻，提供理性的离婚指导，协助处理财产分割、子女抚养等法律与心理问题。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 常见问题 FAQ -->
+    <section class="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>常见问题解答</h2>
+                <p>关于婚姻咨询，您可能关心的几个问题。</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">婚姻咨询需要多长时间才能见效？ <span>+</span></div>
+                    <div class="faq-answer">效果因人而异，取决于问题的严重程度和双方的配合度。通常需要数周至数月的持续咨询，才能看到明显改善。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">如果是单方面的意愿，能做咨询吗？ <span>+</span></div>
+                    <div class="faq-answer">可以。即使一方不想去，另一方也可以先进行个人咨询，了解自身需求，有时也能间接影响伴侣的态度。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">咨询过程会保密吗？ <span>+</span></div>
+                    <div class="faq-answer">是的，心理咨询遵循严格的保密原则。除非涉及生命安全或法律强制报告的情况，您的隐私将得到严格保护。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">你们提供线上咨询吗？ <span>+</span></div>
+                    <div class="faq-answer">提供。我们支持视频通话和语音咨询，方便您在舒适、私密的环境中获得专业帮助。</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 咨询引导 Banner -->
+    <div class="container">
+        <div class="consult-banner" id="consult">
+            <h2>别让沉默成为婚姻的终结</h2>
+            <p>每一段婚姻都值得被修复，每一段关系都有重获新生的可能。现在就迈出改变的第一步。</p>
+            <a href="#" class="btn-white">预约免费心理评估</a>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>婚姻吧</h3>
+                    <p>专注于为家庭提供专业的情感咨询服务。我们致力于帮助每一对夫妻化解矛盾，重建信任，让爱回归家庭。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">咨询师团队</a></li>
+                        <li><a href="#">服务项目</a></li>
+                        <li><a href="#">成功案例</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>热门话题</h4>
+                    <ul>
+                        <li><a href="#">婆媳关系处理</a></li>
+                        <li><a href="#">出轨后的信任重建</a></li>
+                        <li><a href="#">如何提升夫妻性生活质量</a></li>
+                        <li><a href="#">中年婚姻危机</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>联系方式</h4>
+                    <ul>
+                        <li>电话：400-123-4567</li>
+                        <li>邮箱：support@hunyinba.com</li>
+                        <li>地址：北京市朝阳区情感咨询中心</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 婚姻吧. All Rights Reserved. 仅供演示使用。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 简单的 FAQ 手风琴交互
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // 关闭其他打开的项
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    // 切换当前项
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
