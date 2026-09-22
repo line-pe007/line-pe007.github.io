@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="梦幻西游水陆大会攻略、副本流程详解、通关阵容搭配、BOSS打法技巧及奖励掉落全解析。">
+    <meta name="keywords" content="梦幻西游,水陆大会,梦幻西游攻略,副本攻略,梦幻西游副本">
+    <title>梦幻西游水陆大会-副本流程详解与通关阵容搭配指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #f4d03f; /* 金色/金色 */
+            --secondary-color: #2c3e50; /* 深蓝/深灰 */
+            --accent-color: #e74c3c; /* 活力红 */
+            --bg-color: #f9f9f9;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-light: #666666;
+            --border-radius: 8px;
+            --spacing-unit: 1rem;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* 顶部导航 */
+        header {
+            background-color: var(--secondary-color);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: #fff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: #ddd;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero 区域 */
+        .hero {
+            background: linear-gradient(135deg, #1a252f 0%, #2c3e50 100%);
+            color: #fff;
+            padding: 4rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://picsum.photos/seed/xiyou/1200/400?grayscale');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2;
+            mix-blend-mode: overlay;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #e0e0e0;
+        }
+
+        .hero-tags {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(244, 208, 63, 0.2);
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        /* 主体布局 */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 var(--spacing-unit);
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        /* 内容区 */
+        main {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        section {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 0.8rem;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            color: var(--secondary-color);
+            border-left: 5px solid var(--primary-color);
+            padding-left: 10px;
+        }
+
+        /* 副本流程 */
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            position: relative;
+        }
+
+        .process-steps::before {
+            content: "";
+            position: absolute;
+            left: 24px;
+            top: 10px;
+            bottom: 10px;
+            width: 2px;
+            background: #e0e0e0;
+            z-index: 0;
+        }
+
+        .step {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .step-num {
+            width: 48px;
+            height: 48px;
+            background: var(--primary-color);
+            color: var(--secondary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            box-shadow: 0 0 0 4px #fff;
+        }
+
+        .step-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+
+        .step-content p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .highlight-box {
+            background-color: #fff8e1;
+            border-left: 4px solid var(--primary-color);
+            padding: 10px 15px;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #856404;
+        }
+
+        /* 阵容搭配 */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .team-card {
+            background: #f8f9fa;
+            border: 1px solid #eee;
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-color: var(--primary-color);
+        }
+
+        .team-card h4 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .team-card .role {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .team-card .tips {
+            font-size: 0.8rem;
+            color: var(--accent-color);
+            margin-top: 8px;
+            display: block;
+        }
+
+        /* BOSS 战 */
+        .boss-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .boss-item {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: var(--border-radius);
+            padding: 1rem;
+        }
+
+        .boss-icon {
+            width: 60px;
+            height: 60px;
+            background: #eee;
+            border-radius: 50%;
+            margin-right: 1rem;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .boss-info {
+            flex-grow: 1;
+        }
+
+        .boss-info h4 {
+            color: var(--secondary-color);
+            margin-bottom: 0.3rem;
+        }
+
+        .boss-info .hp {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* 侧边栏 */
+        aside {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .sidebar-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .reward-list li {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+            font-size: 0.95rem;
+        }
+
+        .reward-list li:last-child {
+            border-bottom: none;
+        }
+
+        .reward-icon {
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .faq-item h4 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+
+        .faq-item p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-align: center;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #d4ac0d;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .nav-links {
+                display: none; /* 简化处理，移动端隐藏菜单 */
+            }
+
+            .step {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .step-num {
+                margin-bottom: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <span>西游</span>攻略站
+            </div>
+            <nav class="nav-links">
+                <a href="#">首页</a>
+                <a href="#">副本大全</a>
+                <a href="#">活动日历</a>
+                <a href="#">装备打造</a>
+                <a href="#">新手指南</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>梦幻西游水陆大会</h1>
+            <p>西游群雄争霸副本全解析：从入门到精通，掌握通关阵容与BOSS打法</p>
+            <div class="hero-tags">
+                <span class="tag">日常副本</span>
+                <span class="tag">经验丰富</span>
+                <span class="tag">团本挑战</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <main>
+            <!-- 副本简介 -->
+            <section>
+                <div class="section-header">
+                    <h2 class="section-title">副本简介</h2>
+                </div>
+                <p>水陆大会是《梦幻西游》电脑版中经典的日常团本活动，也是玩家获取大量经验、金钱以及稀有道具的重要途径。活动通常在每周特定时间开启，需要玩家组队前往长安城（或指定地点）参加。副本难度适中，适合全等级段玩家参与，是积累资源的热门选择。</p>
+                <br>
+                <div class="highlight-box">
+                    <strong>参与提示：</strong> 建议携带满血满蓝的召唤兽，并准备足够的恢复类药品，以提高通关效率和生存能力。
+                </div>
+            </section>
+
+            <!-- 副本流程 -->
+            <section>
+                <div class="section-header">
+                    <h2 class="section-title">副本流程</h2>
+                </div>
+                <div class="process-steps">
+                    <div class="step">
+                        <div class="step-num">1</div>
+                        <div class="step-content">
+                            <h3>前往挑战</h3>
+                            <p>队长在长安城（或活动NPC处）领取任务，寻找“水陆大会使者”进入副本。副本限时40分钟，需在规定时间内完成所有挑战。</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">2</div>
+                        <div class="step-content">
+                            <h3>三试通关</h3>
+                            <p>副本主要分为三个试炼阶段（通常为：天兵、地煞、最终决战）。每个阶段需要击杀一定数量的怪物并保护NPC或完成特定任务。</p>
+                            <div class="highlight-box">注意：每个阶段都有时间限制，超时将导致副本失败。</div>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">3</div>
+                        <div class="step-content">
+                            <h3>最终决战</h3>
+                            <p>击败副本最终BOSS，完成所有挑战后，队长可领取奖励。奖励包括大量经验、银两、高级魔兽要诀、高级内丹等。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 阵容搭配 -->
+            <section>
+                <div class="section-header">
+                    <h2 class="section-title">推荐阵容</h2>
+                </div>
+                <p>合理的阵容搭配是通关水陆大会的关键，建议采用<strong>1封印、1治疗、3输出</strong>的经典配置。</p>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <h4>封系 (方寸/女儿村)</h4>
+                        <span class="role">控制核心</span>
+                        <span class="tips">优先封印敌方主力输出或关键辅助单位。</span>
+                    </div>
+                    <div class="team-card">
+                        <h4>辅助 (普陀/地府/化生)</h4>
+                        <span class="role">治疗/辅助</span>
+                        <span class="tips">普陀提供持续治疗，地府提供速度和辅助，化生提供群体回复。</span>
+                    </div>
+                    <div class="team-card">
+                        <h4>物理输出 (大唐/狮驼/凌波)</h4>
+                        <span class="role">主要伤害</span>
+                        <span class="tips">大唐适合点杀，狮驼/凌波适合群体爆发，注意切换技能应对不同阶段。</span>
+                    </div>
+                    <div class="team-card">
+                        <h4>法系输出 (龙宫/魔王/神木)</h4>
+                        <span class="role">持续输出</span>
+                        <span class="tips">在物理系技能冷却时提供稳定的法术伤害。</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BOSS打法 -->
+            <section>
+                <div class="section-header">
+                    <h2 class="section-title">BOSS打法要点</h2>
+                </div>
+                <div class="boss-list">
+                    <div class="boss-item">
+                        <div class="boss-icon">⚔️</div>
+                        <div class="boss-info">
+                            <h4>天兵/天将</h4>
+                            <p>物理攻击较高，会使用横扫千军等技能。建议封系优先控制，物理系集中火力点杀。</p>
+                        </div>
+                    </div>
+                    <div class="boss-item">
+                        <div class="boss-icon">🔥</div>
+                        <div class="boss-info">
+                            <h4>地煞星/护法</h4>
+                            <p>拥有较高的法术抗性，会使用群体法术攻击。法系输出需注意蓝量，辅助及时拉起倒地队友。</p>
+                        </div>
+                    </div>
+                    <div class="boss-item">
+                        <div class="boss-icon">👑</div>
+                        <div class="boss-info">
+                            <h4>最终BOSS (玄奘/妖王)</h4>
+                            <p>拥有复杂的技能机制，可能召唤小怪或造成大范围AOE伤害。全队需紧密配合，注意站位，避免被AOE波及。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside>
+            <!-- 奖励预览 -->
+            <div class="sidebar-card">
+                <h3 class="section-title" style="font-size: 1.2rem; margin-bottom: 1rem;">通关奖励</h3>
+                <ul class="reward-list">
+                    <li><span class="reward-icon">💰</span> 大量银两</li>
+                    <li><span class="reward-icon">📜</span> 副本积分</li>
+                    <li><span class="reward-icon">✨</span> 经验奖励</li>
+                    <li><span class="reward-icon">📖</span> 活动宝图</li>
+                    <li><span class="reward-icon">🔮</span> 高级魔兽要诀 (小概率)</li>
+                    <li><span class="reward-icon">💎</span> 稀有内丹碎片 (小概率)</li>
+                </ul>
+            </div>
+
+            <!-- 常见问题 -->
+            <div class="sidebar-card">
+                <h3 class="section-title" style="font-size: 1.2rem; margin-bottom: 1rem;">常见问题 (FAQ)</h3>
+                <div class="faq-item">
+                    <h4>水陆大会每天可以刷几次？</h4>
+                    <p>通常情况下，水陆大会是日常活动，每天可以参与一次（具体次数请以游戏内实际设定为准）。</p>
+                </div>
+                <div class="faq-item">
+                    <h4>组队失败怎么办？</h4>
+                    <p>副本失败不扣取活动积分，但会浪费时间和体力。建议在活动开启高峰期组队，或者提前寻找固定队伍。</p>
+                </div>
+                <div class="faq-item">
+                    <h4>等级过低可以进吗？</h4>
+                    <p>水陆大会对等级有一定要求，通常建议角色等级达到60级或以上再参与，以保证有足够的生存能力。</p>
+                </div>
+                <div class="faq-item">
+                    <h4>奖励是随机发放的吗？</h4>
+                    <p>奖励主要根据队伍的通关进度和表现发放，固定奖励如经验银两是必得的，稀有道具如要诀为随机掉落。</p>
+                </div>
+            </div>
+
+            <!-- 快速入口 -->
+            <div class="sidebar-card" style="text-align: center;">
+                <p style="margin-bottom: 10px; color: #666;">需要更多帮助？</p>
+                <a href="#" class="btn">加入官方玩家群</a>
+                <br>
+                <a href="#" class="btn" style="background: #fff; color: var(--secondary-color); border: 1px solid #ddd; margin-top: 10px;">查看最新活动日历</a>
+            </div>
+        </aside>
+    </div>
+
+    <footer style="background: #2c3e50; color: #95a5a6; padding: 2rem 1rem; text-align: center; margin-top: 2rem;">
+        <p>&copy; 2023 梦幻西游攻略站 - 仅供玩家交流与参考，游戏版权归网易所有。</p>
+        <p style="font-size: 0.8rem; margin-top: 0.5rem;">本站内容基于游戏当前版本整理，可能存在更新滞后情况。</p>
+    </footer>
+
+</body>
+</html>
