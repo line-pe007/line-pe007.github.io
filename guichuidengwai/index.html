@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="鬼吹灯外传 - 专业鬼吹灯同人小说、盗墓笔记衍生作品及民间传说整理网站。提供热门外传推荐、人物关系图解、盗墓术语大全及安全探险指南。">
+    <meta name="keywords" content="鬼吹灯外传, 盗墓同人, 民间传说, 盗墓术语, 探险小说">
+    <title>鬼吹灯外传 - 民间传说与盗墓同人小说专题站</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #8B4513; /* 铁锈红/青铜色 */
+            --secondary-color: #D2691E; /* 巧克力色 */
+            --bg-color: #F4E4BC; /* 羊皮纸色 */
+            --text-color: #2c2c2c;
+            --accent-color: #556B2F; /* 墨绿色 */
+            --border-color: #8B7355;
+            --card-bg: #FFF8DC;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Songti SC", "SimSun", "STSong", serif; /* 宋体更具古风 */
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%238B7355' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Header */
+        header {
+            background-color: #3E2723;
+            color: #D7CCC8;
+            padding: 1rem 0;
+            border-bottom: 4px solid var(--accent-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #FFD700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            border: 2px solid #FFD700;
+            padding: 2px 8px;
+            font-size: 0.9rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            font-weight: bold;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://picsum.photos/seed/tomb/1600/600');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            color: #FFD700;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 10px 25px;
+            background-color: var(--secondary-color);
+            color: white;
+            border: 1px solid var(--accent-color);
+            font-weight: bold;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 3rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            color: var(--primary-color);
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            margin: 10px auto 0;
+        }
+
+        /* Grid Layouts */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        /* Card Styles */
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: var(--primary-color);
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            color: #555;
+            text-align: justify;
+        }
+
+        .card-meta {
+            font-size: 0.85rem;
+            color: #888;
+            border-top: 1px dashed var(--border-color);
+            padding-top: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .tag {
+            background-color: #EEE8AA;
+            color: #556B2F;
+            padding: 2px 6px;
+            border-radius: 2px;
+            font-size: 0.8rem;
+        }
+
+        /* Special Section: Encyclopedia */
+        .encyclopedia-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (max-width: 768px) {
+            .encyclopedia-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .term-item {
+            background: #fff;
+            padding: 15px;
+            border-left: 4px solid var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        .term-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Sidebar Layout */
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        @media (max-width: 768px) {
+            .content-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .sidebar {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .sidebar h3 {
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .sidebar-list {
+            list-style: none;
+        }
+
+        .sidebar-list li {
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .sidebar-list li:last-child {
+            border-bottom: none;
+        }
+
+        .sidebar-list a {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c2c2c;
+            color: #aaa;
+            padding: 3rem 0;
+            margin-top: 3rem;
+            text-align: center;
+            border-top: 5px solid var(--primary-color);
+        }
+
+        .footer-links {
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            margin: 0 10px;
+            color: #ccc;
+        }
+
+        .footer-links a:hover {
+            color: #FFD700;
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Nav */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <div class="logo">
+                <span>古卷</span> 鬼吹灯外传
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">首页</a></li>
+                    <li><a href="#">同人小说</a></li>
+                    <li><a href="#">民间传说</a></li>
+                    <li><a href="#">盗墓术语</a></li>
+                    <li><a href="#">安全指南</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>鬼吹灯外传</h1>
+                <p>探寻未解之谜，整理民间传说，续写盗墓传奇。这里有最全的同人作品库与最严谨的探险知识。</p>
+                <a href="#recommend" class="btn">开始探索</a>
+            </div>
+        </section>
+
+        <div class="container">
+            <!-- Featured Content -->
+            <section id="recommend">
+                <h2 class="section-title">热门外传推荐</h2>
+                <div class="grid">
+                    <article class="card">
+                        <h3>《精绝古城：未解之谜》</h3>
+                        <p>基于原著背景延伸，深入解析精绝古城的地理环境与西域传说，探讨关于鬼洞的更多未解之谜。</p>
+                        <div class="card-meta">
+                            <span class="tag">同人续写</span>
+                            <span>热度: 9.8</span>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <h3>《龙岭迷窟：异界回响》</h3>
+                        <p>在原著的基础上，补充了胡八一在进入龙岭迷窟之前的心理活动与背景故事，增加了民俗细节。</p>
+                        <div class="card-meta">
+                            <span class="tag">人物侧写</span>
+                            <span>热度: 9.5</span>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <h3>《云南虫谷：生态考察》</h3>
+                        <p>从科学角度还原云南虫谷的原始生态，结合原著中的机关陷阱，为探险者提供一份详细的生存指南。</p>
+                        <div class="card-meta">
+                            <span class="tag">科普向</span>
+                            <span>热度: 9.2</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <div class="content-wrapper">
+                <!-- Main Content Area -->
+                <div class="main-content">
+                    <section id="folklore">
+                        <h2 class="section-title">民间传说与野史</h2>
+                        <div class="grid">
+                            <article class="card">
+                                <h3>湘西赶尸考究</h3>
+                                <p>湘西赶尸并非虚构，而是古代一种特殊的迁徙与防腐方式。本文详细考证了其起源、路线与具体操作流程。</p>
+                                <a href="#" style="color:var(--secondary-color); font-size:0.9rem;">阅读全文 &rarr;</a>
+                            </article>
+                            <article class="card">
+                                <h3>九层妖塔的真相</h3>
+                                <p>关于青海九层妖塔的历史原型，结合考古发现与民间传说，分析其可能存在的地宫结构。</p>
+                                <a href="#" style="color:var(--secondary-color); font-size:0.9rem;">阅读全文 &rarr;</a>
+                            </article>
+                            <article class="card">
+                                <h3>粽子（僵尸）的分类</h3>
+                                <p>深入解析盗墓笔记与鬼吹灯体系中的“粽子”分类，从软尸到硬尸，从水鬼到红毛外星人。</p>
+                                <a href="#" style="color:var(--secondary-color); font-size:0.9rem;">阅读全文 &rarr;</a>
+                            </article>
+                        </div>
+                    </section>
+
+                    <section id="guide">
+                        <h2 class="section-title">野外探险安全指南</h2>
+                        <div class="card" style="margin-bottom: 20px;">
+                            <h3>为什么不能随便下墓？</h3>
+                            <p>盗墓是违法行为，且地下环境复杂多变。本文从法律、环境安全、生物危害三个维度，劝阻非专业人员的非法探险行为。</p>
+                        </div>
+                        <div class="card">
+                            <h3>野外生存基础技能</h3>
+                            <p>如果不幸遭遇荒野，应掌握如何辨别方向、寻找水源、生火以及处理伤口等基本生存技能。</p>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <h3>热门分类</h3>
+                    <ul class="sidebar-list">
+                        <li><a href="#">胡八一同人系列 <span>(128)</span></a></li>
+                        <li><a href="#">王胖子支线故事 <span>(95)</span></a></li>
+                        <li><a href="#">摸金校尉装备图鉴 <span>(210)</span></a></li>
+                        <li><a href="#">风水罗盘原理 <span>(67)</span></a></li>
+                        <li><a href="#">民间奇闻录 <span>(450)</span></a></li>
+                    </ul>
+
+                    <h3 style="margin-top: 30px;">盗墓术语小百科</h3>
+                    <div class="term-item">
+                        <span class="term-title">摸金校尉</span>
+                        <p style="font-size:0.9rem; color:#666;">三国时期曹操设立的特殊机构，以挖掘坟墓为生，后成为盗墓贼的代名词。</p>
+                    </div>
+                    <div class="term-item">
+                        <span class="term-title">搬山道人</span>
+                        <p style="font-size:0.9rem; color:#666;">搬山分甲、乙两派，擅长使用分山取土等手段开棺，与摸金校尉、卸岭力士并称。</p>
+                    </div>
+                    <div class="term-item">
+                        <span class="term-title">黑驴蹄子</span>
+                        <p style="font-size:0.9rem; color:#666;">传说中克制僵尸（粽子）的宝物，虽然效果存疑，但在小说中是重要道具。</p>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">关于我们</a>
+                <a href="#">投稿指南</a>
+                <a href="#">免责声明</a>
+                <a href="#">联系方式</a>
+            </div>
+            <p class="copyright">
+                &copy; 2023 鬼吹灯外传专题站. All Rights Reserved.<br>
+                本站内容仅供娱乐与文化交流，严禁用于非法目的。
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
