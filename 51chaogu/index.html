@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="51炒股查询提供专业的股票行情查询、财经资讯、个股分析及市场数据服务，助您把握投资机会。">
+    <meta name="keywords" content="51炒股查询,股票查询,股票行情,股市资讯,个股分析">
+    <title>51炒股查询-专业股票行情与财经数据服务平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --success-color: #27ae60;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --border-color: #e1e4e8;
+            --shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent-color);
+        }
+
+        .search-box {
+            display: flex;
+            background: var(--bg-color);
+            border-radius: 4px;
+            padding: 4px;
+            border: 1px solid var(--border-color);
+        }
+
+        .search-box input {
+            border: none;
+            background: transparent;
+            padding: 6px 10px;
+            outline: none;
+            width: 180px;
+            font-size: 14px;
+        }
+
+        .search-box button {
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            color: var(--text-secondary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stock-ticker {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 14px;
+        }
+
+        .ticker-item {
+            background: rgba(255,255,255,0.15);
+            padding: 8px 16px;
+            border-radius: 20px;
+            backdrop-filter: blur(4px);
+        }
+
+        .ticker-up { color: #2ecc71; }
+        .ticker-down { color: #e74c3c; }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-title a {
+            font-size: 14px;
+            color: var(--accent-color);
+        }
+
+        /* Market Data Grid */
+        .market-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .market-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 24px;
+            transition: transform 0.2s;
+        }
+
+        .market-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .market-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .market-name {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .market-value {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .market-change {
+            font-size: 14px;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .bg-green { background: #e8f8f0; color: var(--success-color); }
+        .bg-red { background: #fdedec; color: #e74c3c; }
+
+        .market-details {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-color);
+            padding-top: 12px;
+        }
+
+        /* Stock List */
+        .stock-list-container {
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .table-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            padding: 16px 24px;
+            background: #f1f3f5;
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .stock-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .stock-table th, .stock-table td {
+            padding: 16px 24px;
+            text-align: right;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .stock-table th:first-child, .stock-table td:first-child {
+            text-align: left;
+        }
+
+        .stock-table th:first-child, .stock-table td:first-child {
+            font-weight: 600;
+        }
+
+        .stock-table tr:hover {
+            background-color: #fafafa;
+        }
+
+        .stock-table tr:hover td {
+            color: var(--text-main);
+        }
+
+        .stock-name {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .stock-icon {
+            width: 20px;
+            height: 20px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 10px;
+        }
+
+        .stock-link {
+            color: var(--accent-color);
+            font-size: 13px;
+        }
+
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .feature-item {
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 16px;
+            display: inline-block;
+        }
+
+        .feature-title {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .feature-desc {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: #bdc3c7;
+            padding: 60px 20px 20px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            font-size: 13px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                height: auto;
+                padding: 12px 20px;
+                gap: 12px;
+            }
+
+            nav ul {
+                gap: 12px;
+                font-size: 13px;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+
+            .search-box input {
+                width: 100%;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .market-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .table-header, .stock-table th, .stock-table td {
+                padding: 12px 10px;
+                font-size: 12px;
+            }
+
+            .stock-table th:nth-child(4), .stock-table td:nth-child(4),
+            .stock-table th:nth-child(5), .stock-table td:nth-child(5) {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                <span>51</span>炒股查询
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">行情中心</a></li>
+                    <li><a href="#">数据中心</a></li>
+                    <li><a href="#">研报资讯</a></li>
+                    <li><a href="#">模拟炒股</a></li>
+                </ul>
+            </nav>
+            <div class="search-box">
+                <input type="text" placeholder="输入股票代码或简称">
+                <button type="button">查询</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>51炒股查询 - 实时掌握市场脉搏</h1>
+        <p>提供A股、港股、美股实时行情、历史数据及深度财经资讯，助您做出明智的投资决策。</p>
+        <div class="stock-ticker">
+            <div class="ticker-item">上证指数 <span class="ticker-up">+1.25%</span></div>
+            <div class="ticker-item">深证成指 <span class="ticker-up">+0.89%</span></div>
+            <div class="ticker-item">创业板指 <span class="ticker-down">-0.15%</span></div>
+            <div class="ticker-item">恒生指数 <span class="ticker-up">+2.10%</span></div>
+            <div class="ticker-item">纳斯达克 <span class="ticker-down">-0.40%</span></div>
+        </div>
+    </section>
+
+    <main>
+        <!-- 市场概览 -->
+        <section>
+            <div class="section-title">
+                <h2>主要市场概览</h2>
+                <a href="#">查看更多 &rarr;</a>
+            </div>
+            <div class="market-grid">
+                <div class="market-card">
+                    <div class="market-header">
+                        <span class="market-name">上证指数</span>
+                        <span class="market-value">3,052.14</span>
+                    </div>
+                    <span class="market-change bg-green">+1.25%</span>
+                    <div class="market-details">
+                        <span>最高: 3,068.00</span>
+                        <span>最低: 3,030.50</span>
+                        <span>成交量: 2,850亿</span>
+                    </div>
+                </div>
+                <div class="market-card">
+                    <div class="market-header">
+                        <span class="market-name">深证成指</span>
+                        <span class="market-value">9,876.32</span>
+                    </div>
+                    <span class="market-change bg-green">+0.89%</span>
+                    <div class="market-details">
+                        <span>最高: 9,920.00</span>
+                        <span>最低: 9,810.20</span>
+                        <span>成交量: 3,120亿</span>
+                    </div>
+                </div>
+                <div class="market-card">
+                    <div class="market-header">
+                        <span class="market-name">创业板指</span>
+                        <span class="market-value">1,980.55</span>
+                    </div>
+                    <span class="market-change bg-red">-0.15%</span>
+                    <div class="market-details">
+                        <span>最高: 1,995.00</span>
+                        <span>最低: 1,970.10</span>
+                        <span>成交量: 1,450亿</span>
+                    </div>
+                </div>
+                <div class="market-card">
+                    <div class="market-header">
+                        <span class="market-name">恒生指数</span>
+                        <span class="market-value">17,850.20</span>
+                    </div>
+                    <span class="market-change bg-green">+2.10%</span>
+                    <div class="market-details">
+                        <span>最高: 17,920.00</span>
+                        <span>最低: 17,600.00</span>
+                        <span>成交量: 850亿</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 热门个股 -->
+        <section>
+            <div class="section-title">
+                <h2>热门股票排行</h2>
+                <a href="#">查看完整榜单 &rarr;</a>
+            </div>
+            <div class="stock-list-container">
+                <div class="table-header">
+                    <div>股票名称/代码</div>
+                    <div>最新价</div>
+                    <div>涨跌幅</div>
+                    <div>涨跌额</div>
+                    <div>成交量</div>
+                </div>
+                <table class="stock-table">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="stock-name">
+                                    <div class="stock-icon">A</div>
+                                    <div>
+                                        <div>贵州茅台</div>
+                                        <div class="stock-link">600519</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>1,850.00</td>
+                            <td class="bg-green" style="color:#27ae60">+1.25%</td>
+                            <td>23.00</td>
+                            <td>2.5万手</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="stock-name">
+                                    <div class="stock-icon">B</div>
+                                    <div>
+                                        <div>宁德时代</div>
+                                        <div class="stock-link">300750</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>210.50</td>
+                            <td class="bg-green" style="color:#27ae60">+3.45%</td>
+                            <td>7.10</td>
+                            <td>8.2万手</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="stock-name">
+                                    <div class="stock-icon">C</div>
+                                    <div>
+                                        <div>比亚迪</div>
+                                        <div class="stock-link">002594</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>245.80</td>
+                            <td class="bg-red" style="color:#e74c3c">-0.82%</td>
+                            <td>-2.10</td>
+                            <td>5.1万手</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="stock-name">
+                                    <div class="stock-icon">D</div>
+                                    <div>
+                                        <div>中国平安</div>
+                                        <div class="stock-link">601318</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>48.20</td>
+                            <td class="bg-green" style="color:#27ae60">+0.50%</td>
+                            <td>0.24</td>
+                            <td>12.0万手</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="stock-name">
+                                    <div class="stock-icon">E</div>
+                                    <div>
+                                        <div>招商银行</div>
+                                        <div class="stock-link">600036</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>32.15</td>
+                            <td class="bg-red" style="color:#e74c3c">-0.15%</td>
+                            <td>-0.05</td>
+                            <td>3.4万手</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="stock-name">
+                                    <div class="stock-icon">F</div>
+                                    <div>
+                                        <div>五粮液</div>
+                                        <div class="stock-link">000858</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>168.90</td>
+                            <td class="bg-green" style="color:#27ae60">+2.10%</td>
+                            <td>3.50</td>
+                            <td>1.8万手</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 核心功能 -->
+        <section>
+            <div class="section-title">
+                <h2>51炒股查询服务</h2>
+            </div>
+            <div class="features">
+                <div class="feature-item">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">实时行情查询</h3>
+                    <p class="feature-desc">提供A股、港股、美股等全球市场的实时行情数据，支持分时、K线图及财务指标查询。</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📈</div>
+                    <h3 class="feature-title">智能数据分析</h3>
+                    <p class="feature-desc">基于大数据的选股工具与趋势分析，帮助您快速筛选潜力股，规避市场风险。</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📰</div>
+                    <h3 class="feature-title">深度财经资讯</h3>
+                    <p class="feature-desc">整合券商研报、上市公司公告及宏观经济新闻，第一时间掌握市场动态。</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🛡️</div>
+                    <h3 class="feature-title">模拟交易体验</h3>
+                    <p class="feature-desc">提供真实盘口的模拟炒股功能，让新手在无风险环境下积累交易经验。</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>51炒股查询</h3>
+                <p style="font-size: 13px; line-height: 1.8;">
+                    51炒股查询致力于为广大投资者提供专业、及时、准确的股票行情查询服务。我们坚持数据透明、服务高效，是您投资路上的得力助手。
+                </p>
+            </div>
+            <div class="footer-col">
+                <h3>快速导航</h3>
+                <ul>
+                    <li><a href="#">行情中心</a></li>
+                    <li><a href="#">数据中心</a></li>
+                    <li><a href="#">新股申购</a></li>
+                    <li><a href="#">龙虎榜</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>投资服务</h3>
+                <ul>
+                    <li><a href="#">基金查询</a></li>
+                    <li><a href="#">理财攻略</a></li>
+                    <li><a href="#">技术分析</a></li>
+                    <li><a href="#">风险提示</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>联系我们</h3>
+                <ul>
+                    <li>客服热线：400-123-4567</li>
+                    <li>工作时间：周一至周五 9:00-18:00</li>
+                    <li>邮箱：support@51gupiao.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 51炒股查询 版权所有. 本站信息仅供参考，不构成投资建议。</p>
+        </div>
+    </footer>
+
+</body>
+  </html>
